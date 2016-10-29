@@ -36,20 +36,24 @@
   <div class="hero-foot">
     <nav class="tabs">
       <div class="container">
-        <ul>
-          <li class="is-active"><a>Overview</a></li>
-          <li><a>Modifiers</a></li>
-          <li><a>Grid</a></li>
-          <li><a>Elements</a></li>
-          <li><a>Components</a></li>
-          <li><a>Layout</a></li>
-        </ul>
+        <nav class="nav has-shadow">
+          <div class="container">
+            <div class="nav-left">
+              <a class="nav-item is-tab is-active">Card</a>
+              <a class="nav-item is-tab">Level</a>
+              <a class="nav-item is-tab">Media object</a>
+            </div>
+          </div>
+        </nav>
       </div>
     </nav>
   </div>
 </section>
 
 <section class="section">
+  <p class="title">
+    Šablona pro detail:
+  </p>
   <div class="container">
 
     <div class="card is-fullwidth">
@@ -77,10 +81,105 @@
 
           <small>November 5 / 10:00 - 11:00 / Large hall / English / Beginner</small>
         </div>
+      </div>
+
+
     </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <p class="title">
+    Šablona pro tabulka:
+  </p>
+  <div class="container">
+
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Speaker</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Building Node.js apps on Google Cloud Platform</td>
+        <td>Mette Atamel</td>
+        <td class="is-icon">
+          <a href="#">
+            <i class="fa fa-info"></i>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>REST API je mrtvé, ať žije GraphQL</td>
+        <td>Petr Ferschmann</td>
+        <td class="is-icon">
+          <a href="#">
+            <i class="fa fa-info"></i>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Robert Mikels</td>
+        <td>Lead Guitar</td>
+        <td class="is-icon">
+          <a href="#">
+            <i class="fa fa-info"></i>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Techniky duševní práce</td>
+        <td>Jaroslav Holaň</td>
+        <td class="is-icon">
+          <a href="#">
+            <i class="fa fa-info"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
 
   </div>
 </section>
+
+<section class="section">
+  <p class="title">
+    Šablona pro notifikace:
+  </p>
+  <div class="container">
+
+
+    <div class="panel">
+      <p class="panel-heading">
+        Poslední oblíbené
+      </p>
+
+      <a class="panel-block is-active" href="#">
+        <span class="panel-icon">
+          <i class="fa fa-heart"></i>
+        </span>
+        REST API je mrtvé, ať žije GraphQL
+      </a>
+
+      <a class="panel-block is-active" href="#">
+        <span class="panel-icon">
+          <i class="fa fa-heart"></i>
+        </span>
+        Techniky duševní práce
+      </a>
+
+    </div>
+
+
+  </div>
+</section>
+
 
 </body>
 </html>

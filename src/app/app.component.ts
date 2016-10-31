@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'Angular 2 worshop!';
 
   sessions = sessions;
-  session = sessions[2];
+  session = sessions[0];
 
   onFavoriteClick(id) {
     console.log('onFavoriteClick', id)

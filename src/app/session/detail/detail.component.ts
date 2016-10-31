@@ -1,20 +1,27 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
 import {EventEmitter} from "@angular/forms/src/facade/async";
+import {SessionDataService} from "../session-data.service";
+import {Session} from "../Session";
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent {
+export class DetailComponent implements OnInit {
 
-  @Input() session;
-  @Output() onFavoriteClick = new EventEmitter<number>();
+  @Input() id: number;
 
-  constructor() { }
+  session: Session;
 
-  onHeaderClick() {
-    debugger;
-    this.onFavoriteClick.emit(this.session.id);
+  constructor(private dataService: SessionDataService) {
   }
+
+  ngOnInit(): void {
+    console.log('init ',typeof this.id)
+    this.dataService.getById(this.id)
+      .then(session => this.session = session);
+  }
+
+
 }

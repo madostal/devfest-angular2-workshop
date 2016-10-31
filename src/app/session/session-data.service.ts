@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Session} from "./Session";
+import {Http} from "@angular/http";
 
 const sessions = require('../../data/sessions.json');
 
@@ -15,7 +16,6 @@ export class SessionDataService {
   }
 
   getById(id: number): Promise<Session|undefined> {
-    console.log('getById', id)
     return this.getList()
       .then(sessions => sessions.find(item => item.id === id));
   }

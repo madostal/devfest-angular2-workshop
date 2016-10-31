@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DetailComponent } from './session/detail/detail.component';
+import { ListComponent } from './session/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DetailComponent
+    DetailComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,10 @@
     <p class="card-header-title">
       {{session.title}}
     </p>
-    <a class="card-header-icon">
+    <a class="card-header-icon"
+      (click)="onHeaderClick()"
+      >
       <i class="fa fa-heart"></i>
-
     </a>
   </header>
   <div class="card-content">

@@ -1,17 +1,20 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
+import {EventEmitter} from "@angular/forms/src/facade/async";
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent {
 
   @Input() session;
+  @Output() onFavoriteClick = new EventEmitter<number>();
 
   constructor() { }
 
-  ngOnInit() {
+  onHeaderClick() {
+    debugger;
+    this.onFavoriteClick.emit(this.session.id);
   }
-
 }

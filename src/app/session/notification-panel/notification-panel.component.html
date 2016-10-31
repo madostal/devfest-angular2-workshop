@@ -1,0 +1,14 @@
+<div class="panel">
+  <p class="panel-heading">
+    Ostatním se líbí:
+  </p>
+
+  <div class="panel-block"
+       *ngFor="let item of items | async">
+        <span class="panel-icon">
+          <i class="fa fa-heart"></i>
+        </span>
+    {{item.user}} likes {{item.sessionTitle}}
+  </div>
+
+</div>

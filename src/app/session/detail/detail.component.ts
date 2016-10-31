@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {SessionDataService} from "../session-data.service";
 import {Session} from "../Session";
 import {ActivatedRoute, Params} from "@angular/router";
+import {AngularFire} from "angularfire2";
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +14,8 @@ export class DetailComponent implements OnInit {
   session: Session;
 
   constructor(private route: ActivatedRoute,
-              private dataService: SessionDataService) {
+              private dataService: SessionDataService,
+              private angularFire: AngularFire) {
   }
 
   ngOnInit(): void {
@@ -27,6 +29,15 @@ export class DetailComponent implements OnInit {
     });
 
 
+  }
+
+  onFavoriteClick(id) {
+    const likes = this.angularFire.database.list('/likes');
+    likes.push({
+      sessionTitle: this.session.title,
+      sessionId: id,
+      user: "some name" // TODO user - statická data z env nebo nějaké služby?
+    });
   }
 
 }

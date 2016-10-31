@@ -20,12 +20,14 @@ Promise.all([
       .forEach(id => {
         let session = sessions[id];
 
-        if (session.speakers) {
-          session.speakers = session.speakers
-            .map(speakerId => {
-              return speakers[speakerId];
-            })
+        if (!session.speakers) {
+          return; // we want only regular lectures
         }
+
+        session.speakers = session.speakers
+          .map(speakerId => {
+            return speakers[speakerId];
+          });
 
         sessionArray.push(session)
 

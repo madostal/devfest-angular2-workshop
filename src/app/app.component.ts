@@ -10,6 +10,7 @@ const sessions = require('../data/sessions-preview.json');
 export class AppComponent {
   title = 'Angular 2 worshop!';
 
+  sessions = sessions;
   session = sessions[2];
 
   onFavoriteClick(id) {

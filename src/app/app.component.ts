@@ -8,7 +8,6 @@ const sessions = require('../data/sessions-preview.json');
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular 2 worshop!';
 
   sessions = sessions;
   session = sessions[0];

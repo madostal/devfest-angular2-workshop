@@ -1,15 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
-import { RouterModule }   from '@angular/router';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from "./app-routing.module";
 
-import { AppComponent } from './app.component';
-import { DetailComponent } from './session/detail/detail.component';
-import { ListComponent } from './session/list/list.component';
-import { DetailCardComponent } from './session/detail-card/detail-card.component';
+import {DetailComponent} from './session/detail/detail.component';
+import {ListComponent} from './session/list/list.component';
+import {DetailCardComponent} from './session/detail-card/detail-card.component';
 import {SessionDataService} from "./session/session-data.service";
+import {Error404Component} from './error/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -17,17 +18,16 @@ import {SessionDataService} from "./session/session-data.service";
     DetailComponent,
     ListComponent,
     DetailCardComponent,
-    // RouterModule.forRoot([
-    //   { path: 'session/:id', component: DetailComponent },
-    //   { path: '', component: ListComponent },
-    // ])
+    Error404Component
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [SessionDataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

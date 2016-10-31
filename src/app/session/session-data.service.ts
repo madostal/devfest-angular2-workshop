@@ -14,7 +14,8 @@ export class SessionDataService {
     return Promise.resolve(sessions);
   }
 
-  getById(id: number): Promise<Session> {
+  getById(id: number): Promise<Session|undefined> {
+    console.log('getById', id)
     return this.getList()
       .then(sessions => sessions.find(item => item.id === id));
   }

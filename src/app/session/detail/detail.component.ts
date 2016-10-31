@@ -1,7 +1,7 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
-import {EventEmitter} from "@angular/forms/src/facade/async";
+import {Component, OnInit, Input} from '@angular/core';
 import {SessionDataService} from "../session-data.service";
 import {Session} from "../Session";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-detail',
@@ -10,17 +10,23 @@ import {Session} from "../Session";
 })
 export class DetailComponent implements OnInit {
 
-  @Input() id: number;
-
   session: Session;
 
-  constructor(private dataService: SessionDataService) {
+  constructor(private route: ActivatedRoute,
+              private dataService: SessionDataService) {
   }
 
   ngOnInit(): void {
-    this.dataService.getById(this.id)
-      .then(session => this.session = session);
-  }
+    this.route.params.forEach((params: Params) => {
+      let id = parseInt(params['id']);
 
+      this.dataService.getById(id)
+        .then(session => {
+          this.session = session
+        });
+    });
+
+
+  }
 
 }

@@ -8,6 +8,11 @@ import {Session} from "../Session";
 })
 export class DetailCardComponent {
 
+  constructor() {
+    console.log('DetailCardComponent construct')
+
+  }
+
   @Input() session: Session;
   @Output() onFavoriteClick = new EventEmitter<number>();
 

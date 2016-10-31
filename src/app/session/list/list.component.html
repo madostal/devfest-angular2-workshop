@@ -1,13 +1,22 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Title</th>
+    <th>
+      <p class="control has-icon">
+        <input class="input"
+               type="text"
+               placeholder="Title"
+               [formControl]="searchNameInput"
+        >
+        <i class="fa fa-search"></i>
+      </p>
+    </th>
     <th>Speaker</th>
     <th></th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let session of sessions">
+  <tr *ngFor="let session of observableSessions| async">
     <td>{{session.title}}</td>
     <td>{{getSpeakersNames(session.speakers)}}</td>
     <td class="is-icon">

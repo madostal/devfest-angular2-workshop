@@ -18,7 +18,6 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('init ',typeof this.id)
     this.dataService.getById(this.id)
       .then(session => this.session = session);
   }

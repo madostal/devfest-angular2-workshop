@@ -1,6 +1,15 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {SessionDataService} from "../session-data.service";
 import {Session} from "../Session";
+import {FormControl} from "@angular/forms";
+
+import {Observable} from "rxjs";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/debounce';
+import 'rxjs/add/operator/startWith';
+import {Subscribable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-list',
@@ -9,21 +18,23 @@ import {Session} from "../Session";
 })
 export class ListComponent implements OnInit {
 
-  sessions: Session[];
+
+  observableSessions: Observable<Session[]>;
+
+  searchNameInput = new FormControl();
 
   constructor(private dataService: SessionDataService) {
   }
 
   ngOnInit(): void {
-    this.dataService.getList()
-      .then(sessions => this.sessions = sessions);
+    this.observableSessions = this.searchNameInput.valueChanges
+      .startWith('')
+      .debounce(() => Observable.interval(200))
+      .distinctUntilChanged()
+      .flatMap(term => this.dataService.search(term));
   }
 
   getSpeakersNames(speakers: any[]) {
-    if (!speakers) {
-      return "";
-    }
-
     return speakers.map(speaker => speaker.name).join(', ');
   }
 }

@@ -19,4 +19,12 @@ export class SessionDataService {
       .then(sessions => sessions.find(item => item.id === id));
   }
 
+  search(text: string) {
+    const lowerCaseText = text.toLowerCase();
+
+    return this.getList()
+      .then(sessions => sessions.filter(item => item.title.toLowerCase().indexOf(lowerCaseText) !== -1));
+
+  }
+
 }

@@ -1,11 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Session} from "./Session";
-import {Http, Response} from "@angular/http";
-
-import {Observable} from "rxjs";
+import { Injectable } from "@angular/core";
+import { Session } from "./Session";
+import { Http, Response } from "@angular/http";
+import { Observable } from "rxjs";
 import "rxjs/operator/map";
 import "rxjs/operator/publishReplay";
-
 
 @Injectable()
 export class SessionDataService {
@@ -21,12 +19,7 @@ export class SessionDataService {
   }
 
   getList(): Observable<Session[]> {
-
-    //    const sessions = require('../../data/sessions.json');
-    //    return Observable.from([sessions]);
-
     return this.cachedSessionsObservable;
-
   }
 
   getById(id: number): Observable<Session> {
@@ -39,32 +32,5 @@ export class SessionDataService {
 
     return this.getList()
       .map(sessions => sessions.filter(item => item.title.toLowerCase().indexOf(lowerCaseText) !== -1));
-
   }
-
 }
-
-// @Injectable()
-// export class SessionDataService {
-//
-//   constructor() {
-//   }
-//
-//   getList(): Promise<Session[]> {
-//     return Promise.resolve(sessions);
-//   }
-//
-//   getById(id: number): Promise<Session|undefined> {
-//     return this.getList()
-//       .then(sessions => sessions.find(item => item.id === id));
-//   }
-//
-//   search(text: string) {
-//     const lowerCaseText = text.toLowerCase();
-//
-//     return this.getList()
-//       .then(sessions => sessions.filter(item => item.title.toLowerCase().indexOf(lowerCaseText) !== -1));
-//
-//   }
-//
-// }

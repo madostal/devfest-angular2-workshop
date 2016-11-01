@@ -1,9 +1,8 @@
-import {NgModule}     from '@angular/core';
-import {RouterModule} from '@angular/router';
-
-import {DetailComponent} from "./session/detail/detail.component";
-import {ListComponent} from "./session/list/list.component";
-import {Error404Component} from "./error/error404/error404.component";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { DetailComponent } from "./session/detail/detail.component";
+import { ListComponent } from "./session/list/list.component";
+import { Error404Component } from "./error/error404/error404.component";
 
 @NgModule({
   imports: [

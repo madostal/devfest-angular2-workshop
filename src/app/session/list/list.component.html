@@ -18,7 +18,7 @@
   <tbody>
   <tr *ngFor="let session of observableSessions| async">
     <td>{{session.title}}</td>
-    <td>{{getSpeakersNames(session.speakers)}}</td>
+    <td>{{session|speakerNames}}</td>
     <td class="is-icon">
       <a [routerLink]="['/session', session.id]">
         <i class="fa fa-info"></i>

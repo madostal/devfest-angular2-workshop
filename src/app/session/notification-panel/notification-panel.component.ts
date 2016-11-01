@@ -1,31 +1,25 @@
-import {Component, OnInit} from '@angular/core';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
-
-import {Observable} from "rxjs";
-import "rxjs/operator/map"
-import "rxjs/operator/take"
-
+import { Component } from "@angular/core";
+import { AngularFire } from "angularfire2";
+import { Observable } from "rxjs";
+import "rxjs/operator/map";
+import "rxjs/operator/take";
 
 @Component({
   selector: 'app-notification-panel',
-  templateUrl: './notification-panel.component.html',
-  styleUrls: ['./notification-panel.component.css']
+  templateUrl: './notification-panel.component.html'
 })
 export class NotificationPanelComponent {
 
   items: Observable<any[]>;
 
   constructor(af: AngularFire) {
-
-    this.items = af.database.list('/likes', {
+    const firebaseQuery = {
       query: {
         limitToLast: 6
       }
-    })
-      .map((lastItems) => {
-        return lastItems.reverse();
-      });
+    };
 
+    this.items = af.database.list('/likes', firebaseQuery)
+      .map(lastItems => lastItems.reverse());
   }
-
 }

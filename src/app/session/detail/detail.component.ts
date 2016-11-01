@@ -1,13 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { SessionDataService } from "../session-data.service";
 import { Session } from "../Session";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { AngularFire } from "angularfire2";
 
 @Component({
   selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  templateUrl: './detail.component.html'
 })
 export class DetailComponent implements OnInit {
 
@@ -33,8 +32,7 @@ export class DetailComponent implements OnInit {
     likes.push({
       sessionTitle: this.session.title,
       sessionId: id,
-      user: "Milan" // TODO user - statická data z env nebo nějaké služby?
+      user: "Milan"
     });
   }
-
 }

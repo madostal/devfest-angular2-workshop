@@ -24,7 +24,6 @@ export class DetailComponent implements OnInit {
 
       this.dataService.getById(id)
         .subscribe(session => {
-          console.log(session)
           this.session = session
         });
     });
@@ -37,7 +36,7 @@ export class DetailComponent implements OnInit {
     likes.push({
       sessionTitle: this.session.title,
       sessionId: id,
-      user: "some name" // TODO user - statická data z env nebo nějaké služby?
+      user: "Milan" // TODO user - statická data z env nebo nějaké služby?
     });
   }
 

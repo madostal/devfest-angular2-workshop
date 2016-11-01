@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {Observable} from "rxjs";
-import {AngularFire} from "angularfire2";
+import { Component } from "@angular/core";
+import { Observable } from "rxjs";
+import { AngularFire } from "angularfire2";
 
 @Component({
   selector: 'app-session-notification-panel',

@@ -1,21 +1,32 @@
 import {Injectable} from '@angular/core';
 import {Session} from "./Session";
-import {Http} from "@angular/http";
+import {Http, Response} from "@angular/http";
 
 import {Observable} from "rxjs";
 import "rxjs/operator/map";
-
-const sessions = require('../../data/sessions.json');
+import "rxjs/operator/publishReplay";
 
 
 @Injectable()
 export class SessionDataService {
+  private sessionUrl = '/data/sessions.json';
 
-  constructor() {
+  constructor(private http: Http) {
   }
 
+  private cachedSessionsObservable: Observable<Session[]> = this.http.get(this.sessionUrl)
+    .map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
+    .publishReplay(1)
+    .refCount();
+
   getList(): Observable<Session[]> {
-    return Observable.from([sessions]);
+
+    //    const sessions = require('../../data/sessions.json');
+    //    return Observable.from([sessions]);
+
+    return this.cachedSessionsObservable;
+
   }
 
   getById(id: number): Observable<Session> {

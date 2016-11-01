@@ -96,8 +96,9 @@ ul.task
       li jazyk a náročnost (language, complexity)
   li zkontrolujte, že se data vypisují správně
 
-hint.
-  data v šabloně vypisuje pomocí složených závorek {{value}} a to i pokud jde o objektové vlastnosti {{object.property}}
+hint
+  div(ng-non-bindable).
+    data v šabloně vypisuje pomocí složených závorek {{value}} a to i pokud jde o objektové vlastnosti {{object.property}}
 
 p.
   U přednášky je dále seznam tagů, ten je nutné vypsat v cyklu
@@ -141,5 +142,14 @@ ul.task
   li definujte vlastnost session jako vstup pomocí dekorátoru @Input
   li v šabloně komponenty #[b app-root] předejte jako hodnotu vlastnos session
 
+p.
+  Stejně tak o kliknutí na ikonku srdíčka chceme notifikovat nadřazenou koumponentu
 
+ul.task
+  li definujte @Output onFavoriteClick jako EventEmmiter
+  li v obsluze kliknutí #[b onHeaderClick] emitujte vlastnost session TODO: nebo session.id?
+  li v šabloně komponenty #[b app-root] reagujte na událost #[b onFavoriteClick] voláním připraveného handleru #[b onFavoriteClick]
 
+.success.
+  Výborně, právě jste vytvořili samostatnou komponentu, která dostává vstupní data a umožňuje reagovat na události, které v ní nastaly.
+  Komponenty jsou základním stavebním prvkem aplikací v Angular 2, v další části se podíváme jak je skládat dohromady a propojit do aplikace.

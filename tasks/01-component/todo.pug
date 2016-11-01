@@ -1,0 +1,51 @@
+h2 Component
+
+p V této části si vytvoříme komponentu, upravíme její šablonu. Vyzoušíme si šablonové výrazy a pipe. Na závěr doplníme komponentě vstupy a výstupy.
+
+h3 0. Spuštění cli
+p Na začátku spustíme angular-cli stack, aby aplikace běžela a průběžně buidlovala změny kódu.
+
+snippet.
+  ng serve
+
+p Na adrese
+  | &nbsp;
+  a(href="http://localhost:4200",target="_blank")
+  | můžete vidět úvodní stránku aplikace s textem "TODO".
+  | Pojďme se tedy pustit do tvorby vlasní komponenty.
+
+
+h3 1. vytvoření komponenty
+p.
+  Pro vytvoření komponenty můžeme použít scaffolding z angular-cli.
+  Komponentu SessionDetail ve složce session nagenerujeme příkazem
+
+snippet.
+  ng generate component session/sessionDetailCard
+
+  # můžete použít také zkrácenou verzi
+  ng g component session/sessionDetailCard
+
+p.
+  Ve složce <b>src/session</b> vznikla podsložka <b>???</b> se čtyřmi soubory - šablonou, styly, testem a kódem.
+  Při pohledu do souboru <b>src/session/session-detail-card/session-detail-card.ts</b> uvidíte následující kód:
+
+snippet.
+  ukázka se selectorem
+
+p.
+  Všimněte si vlastnosti <b>selector<b> v dekorátoru komponenty - to je název html prvku, který bude komponentu reporezentovat.
+  Když tedy v <b>src/app/app.component.html</b> komponentu použijeme, měli bychom po rebuildu vidět v prohlížeči její šablonu.
+
+ul.task
+  li použijte komponentu v app.component.html
+  li zkontrolujte, že se zobrazuje v prohlížeči
+
+h3 2. data a šablona komponenty
+
+h3 3. obsluha událostí
+
+h3 4. @Input a @Output
+
+
+

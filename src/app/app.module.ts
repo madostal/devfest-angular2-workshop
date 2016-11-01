@@ -5,13 +5,13 @@ import { HttpModule } from "@angular/http";
 import { AngularFireModule } from "angularfire2";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { DetailComponent } from "./session/detail/detail.component";
-import { ListComponent } from "./session/list/list.component";
-import { DetailCardComponent } from "./session/detail-card/detail-card.component";
 import { SessionDataService } from "./session/session-data.service";
 import { Error404Component } from "./error/error404/error404.component";
-import { NotificationPanelComponent } from "./session/notification-panel/notification-panel.component";
 import { SpeakerNamesPipe } from './session/speaker-names.pipe';
+import { SessionDetailComponent } from './session/session-detail/session-detail.component';
+import {SessionListComponent} from "./session/session-list/session-list.component";
+import {SessionDetailCardComponent} from "./session/session-detail-card/session-detail-card.component";
+import {SessionNotificationPanelComponent} from "./session/session-notification-panel/session-notification-panel.component";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyD6bJW38OVLOp7VfnsST8-w-HvpVWt7Jtk",
@@ -23,12 +23,13 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    DetailComponent,
-    ListComponent,
-    DetailCardComponent,
     Error404Component,
-    NotificationPanelComponent,
-    SpeakerNamesPipe
+    SpeakerNamesPipe,
+    SessionDetailComponent,
+    SessionListComponent,
+    SessionNotificationPanelComponent,
+    SessionDetailCardComponent,
+    SessionDetailComponent
   ],
   imports: [
     BrowserModule,

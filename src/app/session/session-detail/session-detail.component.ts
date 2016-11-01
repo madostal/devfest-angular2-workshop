@@ -5,10 +5,11 @@ import { ActivatedRoute } from "@angular/router";
 import { AngularFire } from "angularfire2";
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html'
+  selector: 'app-session-detail',
+  templateUrl: './session-detail.component.html',
+  styleUrls: ['./session-detail.component.css']
 })
-export class DetailComponent implements OnInit {
+export class SessionDetailComponent implements OnInit {
 
   session: Session;
 

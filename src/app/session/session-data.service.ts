@@ -11,14 +11,14 @@ import "rxjs/operator/publishReplay";
 export class SessionDataService {
   private sessionUrl = '/data/sessions.json';
 
-  constructor(private http: Http) {
-  }
-
-  private cachedSessionsObservable: Observable<Session[]> = this.http.get(this.sessionUrl)
+  private cachedSessionsObservable: Observable < Session[] > = this.http.get(this.sessionUrl)
     .map((res: Response) => res.json())
     .catch((error: any) => Observable.throw(error.json().error || 'Server error'))
     .publishReplay(1)
     .refCount();
+
+  constructor(private http: Http) {
+  }
 
   getList(): Observable<Session[]> {
 

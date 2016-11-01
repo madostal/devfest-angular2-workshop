@@ -23,7 +23,8 @@ export class DetailComponent implements OnInit {
       let id = parseInt(params['id']);
 
       this.dataService.getById(id)
-        .then(session => {
+        .subscribe(session => {
+          console.log(session)
           this.session = session
         });
     });

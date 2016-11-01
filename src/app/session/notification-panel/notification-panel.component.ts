@@ -13,7 +13,7 @@ import "rxjs/operator/take"
 })
 export class NotificationPanelComponent {
 
-  items: FirebaseListObservable<any[]>;
+  items: Observable<any[]>;
 
   constructor(af: AngularFire) {
 

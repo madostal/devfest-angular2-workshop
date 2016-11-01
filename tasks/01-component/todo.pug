@@ -11,7 +11,7 @@ snippet.
 p Na adrese
   | &nbsp;
   a(href="http://localhost:4200",target="_blank")
-  | můžete vidět úvodní stránku aplikace s textem "TODO: doplnit text".
+  | můžete vidět úvodní stránku aplikace s textem "TODO zde použijte komponentu app-session-detail-card".
   | Pojďme se tedy pustit do tvorby vlastní komponenty.
 
 
@@ -21,17 +21,28 @@ p.
   Komponentu SessionDetail ve složce session nagenerujeme příkazem
 
 snippet.
-  ng generate component session/sessionDetailCard
+  ng generate component session/SessionDetailCard
 
   # můžete použít také zkrácenou verzi
-  ng g component session/sessionDetailCard
+  ng g component session/SessionDetailCard
 
 p.
   Ve složce #[b src/session] vznikla podsložka #[b session-detail-card] se čtyřmi soubory - šablonou, styly, testem a kódem.
   Při pohledu do souboru #[b src/session/session-detail-card/session-detail-card.ts] uvidíte následující kód:
 
 snippet.
-  TODO: ukázka se selektorem
+  import { Component, OnInit } from '@angular/core';
+
+  @Component({
+    selector: 'app-session-detail-card',
+    templateUrl: './session-detail-card.component.html',
+    styleUrls: ['./session-detail-card.component.css']
+  })
+  export class SessionDetailCardComponent implements OnInit {
+
+    ...
+
+  }
 
 p.
   Všimněte si vlastnosti #[b selector] v dekorátoru komponenty - to je název html prvku, který bude komponentu reprezentovat.
@@ -41,6 +52,14 @@ ul.task
   li použijte komponentu v #[b app.component.html]
   li zkontrolujte, že se zobrazuje v prohlížeči
 
+solution
+  i app/app.component.html
+  hr
+  :highlight-html
+    <div class="columns">
+      <app-session-detail-card></app-session-detail-card>
+    </div>
+
 h3 2. data a šablona komponenty
 
 p.
@@ -48,7 +67,7 @@ p.
   Pro začátek tedy nastavíme do session komponenty #[b src/session/session-detail-card/session-detail-card.ts] následující data:
 
 snippet.
-  session = {
+  session: Session = {
    "id": 400,
    "title": "REST API je mrtvé, ať žije GraphQL",
    "description": "REST se stal standardem pro API. Poslední dobou se ale ukazuje, že není vhodné pro uživatelské rozhraní. Facebook nám nabídl GraphQL a skvělou knihovnu Relay, která usnadňuje a zrychluje práci s daty v aplikacích. ",
@@ -69,53 +88,282 @@ snippet.
   }
 
 ul.task
-  li v komponentě sessionDetailCard vytvořte vlastnost session s uvedenými daty.
+  li v komponentě sessionDetailCard vytvořte vlastnost session s uvedenými daty,
+  li importujte přirpavený interface Session, pokud to IDE neudělalo za vás
+
+solution
+  i app/session/session-detail-card/session-detail-card.component.ts
+  hr
+  :highlight-js
+    import {Component, OnInit} from '@angular/core';
+    import {Session} from "../session";
+
+    @Component({
+      selector: 'app-session-detail-card',
+      templateUrl: './session-detail-card.component.html',
+      styleUrls: ['./session-detail-card.component.css']
+    })
+    export class SessionDetailCardComponent implements OnInit {
+
+      session: Session = {
+        "id": 400,
+        "title": "REST API je mrtvé, ať žije GraphQL",
+        "description": "REST se stal standardem pro API. Poslední dobou se ale ukazuje, že není vhodné pro uživatelské rozhraní. Facebook nám nabídl GraphQL a skvělou knihovnu Relay, která usnadňuje a zrychluje práci s daty v aplikacích. ",
+        "speakers": [
+          {
+            "id": 6,
+            "name": "Petr Ferschmann"
+          }
+        ],
+        "language": "Czech",
+        "complexity": "Advanced",
+        "tags": [
+          "Backend",
+          "Web",
+          "GraphQL",
+          "REST API"
+        ]
+      };
+
+      constructor() { }
+
+      ngOnInit() {}
+
+    }
+
 
 p.
   Tyto data nyní můžeme v šabloně používat.
-  Do šablonky si tedy vložíme šablonu připravenou od stylaře TODO soubor, nebo zůstane v indexu?
-  a oživíme ji.
+  Do šablonky si tedy přesuneme šablonu připravenou od stylaře ze souboru #[b src/index.html] a oživíme ji.
 
 ul.task
-  li zkopírujte připravenou šablonku do souboru #[b src/session/session-detail-card/session-detail-card.html]
+  li zkopírujte připravenou šablonku do souboru #[b app/session/session-detail-card/session-detail-card.component.html]
   li oživte v šabloně výpis dat
     ul
-      li název přednášky (title)
-      li popis přednášky  (description)
-      li jazyk a náročnost (language, complexity)
+      li název přednášky (session.title)
+      li popis přednášky  (session.description)
+      li jazyk a náročnost (session.language, session.complexity)
   li zkontrolujte, že se data vypisují správně
 
 hint
   div(ng-non-bindable).
     data v šabloně vypisuje pomocí složených závorek {{value}} a to i pokud jde o objektové vlastnosti {{object.property}}
 
+solution
+  i app/session/session-detail-card/session-detail-card.component.html
+  hr
+  :highlight-html
+    <div class="card is-fullwidth">
+      <header class="card-header">
+        <p class="card-header-title">
+          {{session.title}}
+        </p>
+        <a class="card-header-icon">
+          <i class="fa fa-heart"></i>
+        </a>
+      </header>
+      <div class="card-content">
+        <div class="content">
+
+          <div class="tags">
+                <span class="tag is-primary">
+                  Backend
+                </span>
+          </div>
+
+          {{session.description}}<br>
+
+          <small>{{session.language}} / {{session.complexity}}</small>
+
+          <div class="speakers">
+            <b>Přednáší:</b>
+            Mete Atamel
+          </div>
+
+        </div>
+      </div>
+    </div>
+
 p.
   U přednášky je dále seznam tagů, ten je nutné vypsat v cyklu
 
 ul.task
-  li použijte #[b ngFor] k vypsání tagů
+  li použijte #[b ngFor] k vypsání tagů (session.tags)
 
-hint.
-  <div *ngFor="let item of itemsCollection">
+hint
+  :highlight-html
+    <div *ngFor="let item of itemsCollection">
+
+solution
+  i app/session/session-detail-card/session-detail-card.component.html
+  hr
+  :highlight-html
+    ...
+    <div class="tags">
+      <span class="tag is-primary"
+            *ngFor="let tag of session.tags">
+        {{tag}}
+      </span>
+    </div>
+    ...
 
 p.
   Poslední informace, která zatím chybí jsou informace o přednášejícím.
-  Protože přednášejících může být víc, najdete je v poli #[b speakers]
+  Protože přednášejících může být víc, najdete je v poli #[b speakers]. Mohli bychom opět použít ngFor, ukážeme si ale jiné řešení.
+  Použijeme volání metody v šabloně - nejprve si připravíme metodu
 
+snippet
+  :highlight-js
+    getSpeakerNames() {
+      let speakers: Speaker[] = this.session.speakers || [];
+      return speakers.map(speaker => speaker.name).join(', ');
+    }
 
 ul.task
-  li použijte #[b ngFor] k vypsání přednášejících //TODO nebo pipe?
+  li přidejte do souboru #[b app/session/session-detail-card/session-detail-card.component.ts] výše uvedenou metodu
+  li zavolejte jí v šabloně #[b app/session/session-detail-card.component.html]
+  li zkontrolujte, že se jméno vypisuje správně
+
+solution
+  i app/session/session-detail-card/session-detail-card.component.ts
+  hr
+  :highlight-js
+    import {Component, OnInit} from '@angular/core';
+    import {Session} from "../session";
+    import {Speaker} from "../speaker";
+
+    @Component({
+      selector: 'app-session-detail-card',
+      templateUrl: './session-detail-card.component.html',
+      styleUrls: ['./session-detail-card.component.css']
+    })
+    export class SessionDetailCardComponent implements OnInit {
+
+      session: Session = {
+        "id": 400,
+        "title": "REST API je mrtvé, ať žije GraphQL",
+        "description": "REST se stal standardem pro API. Poslední dobou se ale ukazuje, že není vhodné pro uživatelské rozhraní. Facebook nám nabídl GraphQL a skvělou knihovnu Relay, která usnadňuje a zrychluje práci s daty v aplikacích. ",
+        "speakers": [
+          {
+            "id": 6,
+            "name": "Petr Ferschmann"
+          }
+        ],
+        "language": "Czech",
+        "complexity": "Advanced",
+        "tags": [
+          "Backend",
+          "Web",
+          "GraphQL",
+          "REST API"
+        ]
+      };
+
+      constructor() { }
+
+      ngOnInit() { }
+
+      getSpeakerNames() {
+        let speakers: Speaker[] = this.session.speakers || [];
+        return speakers.map(speaker => speaker.name).join(', ');
+      }
+
+    }
+
+  hr
+  i app/session/session-detail-card/session-detail-card.component.html
+  hr
+  :highlight-html
+    ...
+    <div class="speakers">
+      <b>Přednáší:</b>
+      {{getSpeakerNames()}}
+    </div>
+    ...
+
+h3 styly komponenty
+p.
+  V aplikaci můžete definovat obecně platné styly, můžete je ale také omezit na komponentu.
+  Naše komponenta by mohla mít větší mezery u některých prvků, zároveň ale nechceme styly ovlivnit nic jiného, definujeme je tedy přímo komponentě.
+
+snippet
+  :highlight
+    .tags .tag {
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
+
+    .speakers {
+      margin-top: 20px;
+    }
+
+ul.task
+  li vložte styly do souboru #[b app/session/session-detail-card/session-detail-card.component.css]
+  li zkontrolujte, že se projevili a jak je zajištěno aby nedošlo ke kolizi stylů s dalšími komponentami.
+
+solution
+  i app/session/session-detail-card/session-detail-card.component.css
+  hr
+  :highlight
+    .tags .tag {
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
+
+    .speakers {
+      margin-top: 20px;
+    }
+
 
 h3 3. obsluha událostí
 p.
   V pravém horním rohu komponenty najdete odkaz s ikonkou srdíčka. V budoucnu ho budeme používat k označení přednášek,
   které se uživateli líbí. To ale není starostí této komponenty. Ta budou pouze notifikovat nadřazenou komponentu.
-  Pojďme si tedy vyzkoušet zpracování událostí.
+  Prozatím si pojďme vyzkoušet zpracování událostí.
 
 ul.task
-  li Vytvořte ve třídě komponenty #[b class-path] metodu #[b onHeaderClick]. Pro začátek stačí když v ní zalogujete do konzole.
+  li Vytvořte ve třídě komponenty #[b app/session/session-detail-card/session-detail-card.component.ts] metodu #[b onHeaderClick]. Pro začátek stačí když v ní zalogujete do konzole.
   li použijte metodu #[b onHeaderClick] jako obsluhu události #[b click]  odkazu s ikonou.
   li ověřte, že při kliknutí opravdu dojte k zavolání obslužné metody a výpisu do konzole.
+
+solution
+  i app/session/session-detail-card/session-detail-card.component.ts
+  hr
+  :highlight-js
+    ...
+    export class SessionDetailCardComponent implements OnInit {
+
+      session: Session = {
+        "id": 400,
+        "title": "REST API je mrtvé, ať žije GraphQL",
+        ...
+      };
+
+      constructor() { }
+
+      ngOnInit() { }
+
+      getSpeakerNames() {
+        let speakers: Speaker[] = this.session.speakers || [];
+        return speakers.map(speaker => speaker.name).join(', ');
+      }
+
+      onHeaderClick() {
+        console.log('onHeaderClick');
+      }
+
+    }
+
+  hr
+  i app/session/session-detail-card/session-detail-card.component.html
+  hr
+  :highlight-html
+    ...
+    <a class="card-header-icon"
+       (click)="onHeaderClick()" )>
+      <i class="fa fa-heart"></i>
+    </a>
+    ...
 
 h3 4. @Input a @Output
 p.
@@ -125,19 +373,74 @@ p.
 p.
   Data o přednášce by komponenta měla dostávat zvenku.
   Smažeme tedy data uvedená v komponentě a označme vlastnost session jako vstup.
-  Data jí pak předáme z nadřazení komponenty #[b app-root] kde jsou připravena ve vlastnosti session.
+  Data jí pak předáme z nadřazení komponenty #[b app-root] kde jsou připravena ve vlastnosti #[b sessionExample].
 
 ul.task
   li definujte vlastnost session jako vstup pomocí dekorátoru @Input
-  li v šabloně komponenty #[b app-root] předejte jako hodnotu vlastnosti session
+  li v šabloně komponenty #[b app-root] předejte #[b sessionExample] jako atribut session
+
+solution
+  i app/session/session-detail-card/session-detail-card.component.ts
+  hr
+  :highlight-js
+    ...
+    export class SessionDetailCardComponent implements OnInit {
+
+      @Input() session: Session;
+
+      constructor() { }
+
+      ...
+
+    }
+
+  hr
+  i app/app.component.html
+  hr
+  :highlight-html
+    <div class="columns">
+      <app-session-detail-card [session]="sessionExample"></app-session-detail-card>
+    </div>
 
 p.
   Stejně tak o kliknutí na ikonku srdíčka chceme notifikovat nadřazenou koumponentu
 
 ul.task
-  li definujte @Output onFavoriteClick jako EventEmmiter
-  li v obsluze kliknutí #[b onHeaderClick] emitujte vlastnost session TODO: nebo session.id?
-  li v šabloně komponenty #[b app-root] reagujte na událost #[b onFavoriteClick] voláním připraveného handleru #[b onFavoriteClick]
+  li definujte @Output onFavoriteClick a jako hodnotu mu přiřaďte novou instanci třídy EventEmitter
+  li v obsluze kliknutí #[b onHeaderClick] emitujte vlastnost #[b session]
+  li.
+    v šabloně komponenty #[b app-root] reagujte na událost #[b onFavoriteClick] voláním připraveného handleru #[b favoriteClickHandler]
+    a jako parametr předejte $event (tedy hodnotu emitovanou komponentou)
+
+
+solution
+  i app/session/session-detail-card/session-detail-card.component.ts
+  hr
+  :highlight-js
+    ...
+    export class SessionDetailCardComponent implements OnInit {
+
+      @Input() session: Session;
+
+      @Output() onFavoriteClick = new EventEmitter();
+
+      ...
+
+      onHeaderClick() {
+        this.onFavoriteClick.emit(this.session);
+      }
+
+    }
+
+  hr
+  i app/app.component.html
+  hr
+  :highlight-html
+    <div class="columns">
+      <app-session-detail-card
+        [session]="sessionExample"
+        (onFavoriteClick)="favoriteClickHandler($event)"></app-session-detail-card>
+    </div>
 
 .success.
   Výborně, právě jste vytvořili samostatnou komponentu, která dostává vstupní data a umožňuje reagovat na události, které v ní nastaly.

@@ -1,5 +1,6 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Session} from "../../session/Session";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Session } from "../../session/Session";
+import { Speaker } from "../speaker";
 
 @Component({
   selector: 'app-session-detail-card',
@@ -18,4 +19,8 @@ export class SessionDetailCardComponent {
     this.onFavoriteClick.emit(this.session.id);
   }
 
+  getSpeakerNames() {
+    let speakers: Speaker[] = this.session.speakers || []
+    return speakers.map(speaker => speaker.name).join(', ');
+  }
 }

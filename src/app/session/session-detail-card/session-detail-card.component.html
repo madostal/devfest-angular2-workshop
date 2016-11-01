@@ -25,10 +25,7 @@
 
       <div class="speakers">
         <b>Přednáší:</b>
-        <div *ngFor="let speaker of session.speakers">
-          {{speaker.name}} [{{speaker.company}}]
-        </div>
-
+        {{getSpeakerNames()}}
       </div>
 
     </div>

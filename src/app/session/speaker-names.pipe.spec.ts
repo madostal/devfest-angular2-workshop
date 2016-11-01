@@ -36,9 +36,9 @@ describe('Pipe: SpeakerNames', () => {
 
       speakers : [
 
-        {name: 'First'},
-        {name: 'Second'},
-        {name: 'Third'}
+        {name: 'First', company: "FirstCompany"},
+        {name: 'Second', company: "SecondCompany"},
+        {name: 'Third', company: "ThirdCompany"}
       ]
     };
 

@@ -1,8 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {SessionDataService} from "../session-data.service";
-import {Session} from "../Session";
-import {ActivatedRoute, Params} from "@angular/router";
-import {AngularFire} from "angularfire2";
+import { Component, OnInit, Input } from '@angular/core';
+import { SessionDataService } from "../session-data.service";
+import { Session } from "../Session";
+import { ActivatedRoute, Params } from "@angular/router";
+import { AngularFire } from "angularfire2";
 
 @Component({
   selector: 'app-detail',
@@ -19,20 +19,17 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.forEach((params: Params) => {
-      let id = parseInt(params['id']);
+    let id = +this.route.snapshot.params['id'];
 
-      this.dataService.getById(id)
-        .subscribe(session => {
-          this.session = session
-        });
-    });
-
-
+    this.dataService.getById(id)
+      .subscribe(session => {
+        this.session = session
+      });
   }
 
   onFavoriteClick(id) {
     const likes = this.angularFire.database.list('/likes');
+
     likes.push({
       sessionTitle: this.session.title,
       sessionId: id,

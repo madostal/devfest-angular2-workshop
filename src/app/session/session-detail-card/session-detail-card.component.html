@@ -1,0 +1,34 @@
+<div class="card is-fullwidth">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{session.title}}
+    </p>
+
+    <a class="card-header-icon"
+       (click)="onHeaderClick()">
+      <i class="fa fa-heart"></i>
+    </a>
+
+  </header>
+  <div class="card-content">
+    <div class="content">
+
+      <div class="tags">
+        <span class="tag is-primary"
+              *ngFor="let tag of session.tags">
+          {{tag}}
+        </span>
+      </div>
+
+      {{session.description}}<br>
+
+      <small>{{session.language}} / {{session.complexity}}</small>
+
+      <div class="speakers">
+        <b>Přednáší:</b>
+        {{getSpeakerNames()}}
+      </div>
+
+    </div>
+  </div>
+</div>

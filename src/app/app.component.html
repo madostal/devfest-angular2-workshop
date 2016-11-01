@@ -1,3 +1,5 @@
 <div class="columns">
-  TODO zde použijte komponentu app-session-detail-card
+  <app-session-detail-card
+    [session]="sessionExample"
+    (onFavoriteClick)="favoriteClickHandler($event)"></app-session-detail-card>
 </div>

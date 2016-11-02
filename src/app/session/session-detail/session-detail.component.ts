@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { SessionDataService } from "../session-data.service";
-import { Session } from "../Session";
-import { ActivatedRoute } from "@angular/router";
-import { AngularFire } from "angularfire2";
+import {Component, OnInit} from "@angular/core";
+import {SessionDataService} from "../session-data.service";
+import {Session} from "../Session";
+import {ActivatedRoute} from "@angular/router";
+import {AngularFire} from "angularfire2";
+import {SessionLike} from "../session-like";
 
 @Component({
   selector: 'app-session-detail',
@@ -28,12 +29,14 @@ export class SessionDetailComponent implements OnInit {
   }
 
   onFavoriteClick(session) {
-    const likes = this.angularFire.database.list('/likes');
-
-    likes.push({
+    const notification: SessionLike = {
       sessionTitle: session.title,
       sessionId: session.id,
       user: "Milan"
-    });
+    };
+
+    const likes = this.angularFire.database.list('/likes');
+
+    likes.push(notification);
   }
 }

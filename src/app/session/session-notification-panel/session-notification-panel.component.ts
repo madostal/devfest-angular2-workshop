@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Observable } from "rxjs";
 import { AngularFire } from "angularfire2";
+import {SessionLike} from "../session-like";
 
 @Component({
   selector: 'app-session-notification-panel',
@@ -8,7 +9,7 @@ import { AngularFire } from "angularfire2";
 })
 export class SessionNotificationPanelComponent {
 
-  items: Observable<any[]>;
+  items: Observable<SessionLike[]>;
 
   constructor(af: AngularFire) {
     const firebaseQuery = {

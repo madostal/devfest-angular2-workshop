@@ -8,6 +8,7 @@ import { SpeakerNamesPipe } from './session/speaker-names.pipe';
 import { SessionDetailComponent } from './session/session-detail/session-detail.component';
 import {SessionListComponent} from "./session/session-list/session-list.component";
 import {SessionDetailCardComponent} from "./session/session-detail-card/session-detail-card.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {SessionDetailCardComponent} from "./session/session-detail-card/session-
   imports: [
     BrowserModule,
     HttpModule,
+    AppRoutingModule
   ],
   providers: [SessionDataService],
   bootstrap: [AppComponent]

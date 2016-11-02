@@ -15,7 +15,7 @@
     <td>{{session.title}}</td>
     <td>{{session|speakerNames}}</td>
     <td class="is-icon">
-      <a href="#">
+      <a [routerLink]="['/session', session.id]">
         <i class="fa fa-info"></i>
       </a>
     </td>

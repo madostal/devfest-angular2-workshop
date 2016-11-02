@@ -33,7 +33,6 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)

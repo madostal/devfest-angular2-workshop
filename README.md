@@ -42,4 +42,4 @@ Ten zbuilduje projekt a zpřístupní ho na adrese [http://localhost:4200](http:
 
 ###Pokud vše proběhlo bez chyb, jste připravení. Těšíme se na workshopu.
 
-
+Objeví-li se během instalace nějaký problém, napište na [angular@angular.cz](mailto:angular@angular.cz), poradíme vám jak dál.

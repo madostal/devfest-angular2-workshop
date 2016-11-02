@@ -22,6 +22,7 @@ describe('Pipe: SpeakerNames', () => {
     let session: Session = {
       id: 1,
       title: 'title',
+      description: 'description',
       tags: []
     };
 
@@ -32,6 +33,7 @@ describe('Pipe: SpeakerNames', () => {
     let session: Session = {
       id: 1,
       title: 'title',
+      description: 'description',
       tags: [],
 
       speakers : [

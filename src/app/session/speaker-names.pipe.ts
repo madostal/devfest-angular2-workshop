@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 import { Session } from "./Session";
 
 @Pipe({
@@ -7,7 +7,7 @@ import { Session } from "./Session";
 export class SpeakerNamesPipe implements PipeTransform {
 
   transform(session: Session): string {
-    if(!session || !session.speakers) {
+    if (!session || !session.speakers) {
       return ""
     }
 

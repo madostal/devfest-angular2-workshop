@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Session} from "../../session/Session";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Session } from "../../session/Session";
 
 @Component({
   selector: 'app-session-detail-card',

@@ -10,15 +10,15 @@ snippet.
 
 p Na adrese
   | &nbsp;
-  a(href="http://localhost:4200",target="_blank")
-  | můžete vidět úvodní stránku aplikace s textem "TODO zde použijte komponentu app-session-detail-card".
+  a(href="http://localhost:4200",target="_blank") http://localhost:4200
+  |  můžete vidět úvodní stránku aplikace s textem "TODO zde použijte komponentu app-session-detail-card".
   | Pojďme se tedy pustit do tvorby vlastní komponenty.
 
 
 h3 1. vytvoření komponenty
 p.
-  Pro vytvoření komponenty můžeme použít scaffolding z angular-cli.
-  Komponentu SessionDetail ve složce session nagenerujeme příkazem
+  Pro vytvoření komponenty můžeme použít scaffolding z #[strong angular-cli].
+  Komponentu #[strong SessionDetail] ve složce #[em session] nagenerujeme příkazem
 
 snippet.
   ng generate component session/SessionDetailCard
@@ -27,22 +27,26 @@ snippet.
   ng g component session/SessionDetailCard
 
 p.
-  Ve složce #[b src/session] vznikla podsložka #[b session-detail-card] se čtyřmi soubory - šablonou, styly, testem a kódem.
+  Ve složce #[strong src/session] vznikla podsložka #[b session-detail-card] se čtyřmi soubory - šablonou, styly, testem a kódem.
   Při pohledu do souboru #[b src/session/session-detail-card/session-detail-card.ts] uvidíte následující kód:
 
-snippet.
-  import { Component, OnInit } from '@angular/core';
+snippet
+  :highlight-js
+    import { Component, OnInit } from '@angular/core';
 
-  @Component({
-    selector: 'app-session-detail-card',
-    templateUrl: './session-detail-card.component.html',
-    styleUrls: ['./session-detail-card.component.css']
-  })
-  export class SessionDetailCardComponent implements OnInit {
+    @Component({
+      selector: 'app-session-detail-card',
+      templateUrl: './session-detail-card.component.html',
+      styleUrls: ['./session-detail-card.component.css']
+    })
+    export class SessionDetailCardComponent implements OnInit {
 
-    ...
+      constructor() { }
 
-  }
+      ngOnInit() {
+      }
+
+    }
 
 p.
   Všimněte si vlastnosti #[b selector] v dekorátoru komponenty - to je název html prvku, který bude komponentu reprezentovat.
@@ -64,7 +68,11 @@ h3 2. data a šablona komponenty
 
 p.
   Šablona může jako data využívat vlastnosti třídy komponenty.
-  Pro začátek tedy nastavíme do session komponenty #[b src/session/session-detail-card/session-detail-card.ts] následující data:
+  Pro začátek tedy nastavíme do session komponenty #[b src/session/session-detail-card/session-detail-card.ts] data
+
+ul.task
+  li v komponentě sessionDetailCard vytvořte vlastnost session s daty níže
+  li importujte přirpavený interface Session, pokud to IDE neudělalo za vás
 
 snippet.
   session: Session = {
@@ -86,10 +94,6 @@ snippet.
      "REST API"
    ]
   }
-
-ul.task
-  li v komponentě sessionDetailCard vytvořte vlastnost session s uvedenými daty,
-  li importujte přirpavený interface Session, pokud to IDE neudělalo za vás
 
 solution
   i app/session/session-detail-card/session-detail-card.component.ts

@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import "rxjs/operator/map";
 import "rxjs/operator/publishReplay";
 
-const sessions = require("../../../data/sessions.json");
+const sessions = require("../../data/sessions.json");
 
 export class SessionDataService {
 

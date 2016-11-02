@@ -28,6 +28,8 @@ export class SessionDataService {
   }
 
   search(text: string): Observable<Session[]> {
+    console.log("SessionDataService - search: ", text);
+
     const lowerCaseText = text.toLowerCase();
 
     return this.getList()

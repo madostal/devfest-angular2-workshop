@@ -10,13 +10,13 @@ import { Speaker } from "../speaker";
 export class SessionDetailCardComponent {
 
   @Input() session: Session;
-  @Output() onFavoriteClick = new EventEmitter<number>();
+  @Output() onFavoriteClick = new EventEmitter<Session>();
 
   constructor() {
   }
 
   onHeaderClick() {
-    this.onFavoriteClick.emit(this.session.id);
+    this.onFavoriteClick.emit(this.session);
   }
 
   getSpeakerNames() {

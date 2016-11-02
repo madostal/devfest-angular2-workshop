@@ -27,12 +27,12 @@ export class SessionDetailComponent implements OnInit {
       });
   }
 
-  onFavoriteClick(id) {
+  onFavoriteClick(session) {
     const likes = this.angularFire.database.list('/likes');
 
     likes.push({
-      sessionTitle: this.session.title,
-      sessionId: id,
+      sessionTitle: session.title,
+      sessionId: session.id,
       user: "Milan"
     });
   }

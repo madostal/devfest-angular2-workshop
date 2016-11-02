@@ -115,6 +115,34 @@ solution
     ...
 
 h3 3. Error component
+p.
+  Všimněte si, že když zadáte nějakou nesmyslnou adresu, např. #[a(href="http://localhost:4200/qwerty", target="_blank") localhost:4200/qwerty]
+  aplikace ne ni nereaguje příliš rozumně.
+  Pro tyto situace máme připravenou komponentu Error404Component, kterou nyní využijeme.
+
+ul.task
+  li v souboru #[b app/app-routing.module.ts] přidejte komponentu #[b Error404Component] pro jiné než uvedené cesty (path: '**')
+  li zkontrolujte, že aplikace zobrazí chybouvou komponentu např. na adrese #[a(href="http://localhost:4200/qwerty", target="_blank") localhost:4200/qwerty]
+
+solution
+  i app/app-routing.module.ts
+  hr
+  :highlight-js
+    ...
+    @NgModule({
+      imports: [
+        RouterModule.forRoot([
+            {path: '', component: SessionListComponent},
+            {path: 'session/:id', component: SessionDetailComponent}
+          ]
+        )
+      ],
+      exports: [
+        RouterModule
+      ]
+    })
+    export class AppRoutingModule {
+    }
 
 
 h3 4. Služba pro načítání dat

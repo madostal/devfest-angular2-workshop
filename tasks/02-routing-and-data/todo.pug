@@ -1,3 +1,126 @@
-//
-   Created by milanlempera on 01/11/2016.
+h2 Routing and Data
 
+p.
+  V předchozí části jsme vytvořili komponentu karty detailu přednášky. V tomhto kroku máme připřaveny další komponenty.
+  #[b SessionDetailComponent], která využívá dříve vytvořenou kartu komponenty, a #[b SessionListComponent],
+  která představuje seznam přednášek.
+
+p.
+  Obě komponenty jsou zatím zobrazeny na jedné stránce. Našim úkolem bude použít router, tak aby se dalo přecházet
+  mezi seznamem a detailem a v dalším kroku potom zajistit správné načítání dat.
+
+h3 1. Použití routeru
+
+p.
+  Konfigurace routeru má standardní formát, proto jsme pro vás připravili skelet v souboru #[b app/app-routing.module.ts]
+
+ul.task
+  li prohlédněte si nastavení routingu v #[b app/app-routing.module.ts]
+  li přidejte #[b AppRoutingModule] do sekce imports v #[b app/app.module.ts]
+  li nahraďte použití komponent #[b app-session-list] a #[b app-session-detail] v šabloně #[b app/app.component.html] elementem  #[b router-outlet]
+  li zkontrolujte, že aplikace nyní zobrazuje jen komponentu SessionListComponent
+
+solution
+  i app/app.module.ts
+  hr
+  :highlight-js
+    ...
+    @NgModule({
+      declarations: [
+        AppComponent,
+        Error404Component,
+        SpeakerNamesPipe,
+        SessionDetailComponent,
+        SessionListComponent,
+        SessionDetailCardComponent,
+        SessionDetailComponent
+      ],
+      imports: [
+        BrowserModule,
+        HttpModule,
+        AppRoutingModule
+      ],
+      providers: [SessionDataService],
+      bootstrap: [AppComponent]
+    })
+    export class AppModule {
+    }
+
+  hr
+  i app/app.component.html
+  hr
+  :highlight-html
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+h3 2. Detail v routeru
+
+p.
+  Nyní v routeru definujeme adresu komponenty detail
+
+ul.task
+  li v souboru #[b app/app-routing.module.ts] přidejte komponentu #[b SessionDetailComponent] s cestou #[b 'session/:id']
+    ul
+      li to samo o sobě stačí k tomu, aby se na adrese /session/100 zobrazila komponenta detailu
+  li v šabloně #[b app/session/session-list/session-list.component.html] na odkaz nastavte atribut routerLink, tak aby odkaz směřoval na příslušný detail (parametry budou ['session', session.id])
+    ul
+      li to, že detail je vždy stejný je dané tím, že jsme zatím neřešili načítání dat dle url
+li v šabloně #[b app/session/session-detail/session-detail.component.html] na odkaz Zpět nastavte atribut routerLink, tak aby odkaz zpět mířil opět na seznam (parametry bude / )
+  li zkontrolujte, že se můžete prokliknout na detail a zpět pomocí odkazů
+
+solution
+  i app/app-routing.module.ts
+  hr
+  :highlight-js
+    ...
+    @NgModule({
+      imports: [
+        RouterModule.forRoot([
+            {path: '', component: SessionListComponent},
+            {path: 'session/:id', component: SessionDetailComponent}
+          ]
+        )
+      ],
+      exports: [
+        RouterModule
+      ]
+    })
+    export class AppRoutingModule {
+    }
+
+  hr
+  i app/session/session-list/session-list.component.html
+  hr
+  :highlight-html
+    ...
+    <td class="is-icon">
+      <a [routerLink]="['/session', session.id]">
+        <i class="fa fa-info"></i>
+      </a>
+    </td>
+    ...
+
+  hr
+  i app/session/session-detail/session-detail.component.html
+  hr
+  :highlight-html
+    ...
+    <div class="back-link is-pulled-right">
+      <a routerLink="/">Zpět</a>
+    </div>
+    ...
+
+h3 3. Error component
+
+
+h3 4. Služba pro načítání dat
+
+
+h3 5. Data pro list
+
+
+h3 4. Data pro detail

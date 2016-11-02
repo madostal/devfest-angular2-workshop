@@ -11,7 +11,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let session of sessions">
+  <tr *ngFor="let session of sessions | async">
     <td>{{session.title}}</td>
     <td>{{session|speakerNames}}</td>
     <td class="is-icon">

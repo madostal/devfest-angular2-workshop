@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import { Session } from "../Session";
-
-const sessions = require("../../../data/sessions-preview.json");
+import { ActivatedRoute } from "@angular/router";
+import { SessionDataService } from "../session-data.service";
 
 @Component({
   selector: 'app-session-detail',
@@ -10,13 +10,16 @@ const sessions = require("../../../data/sessions-preview.json");
 })
 export class SessionDetailComponent implements OnInit {
 
-  session: Session = sessions[1];
+  session: Session;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private sessionDataService: SessionDataService) {
   }
 
   ngOnInit(): void {
-    // TODO načtení dat dle id z routeru
+    let id = parseInt(this.route.snapshot.params['id']);
+
+    this.sessionDataService.getById(id)
+      .subscribe(session => {this.session = session});
   }
 
   favoriteClickHandler(session: Session) {

@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Session} from "../../session/Session";
-import {FormControl} from "@angular/forms";
-import {SessionDataService} from "../../session/session-data.service";
+import { Component, OnInit } from "@angular/core";
+import { Session } from "../../session/Session";
+import { SessionDataService } from "../session-data.service";
+import { Observable } from "rxjs";
 
 const sessions = require("../../../data/sessions-preview.json");
 
@@ -12,13 +11,13 @@ const sessions = require("../../../data/sessions-preview.json");
 })
 export class SessionListComponent implements OnInit {
 
-  sessions: Session[] = sessions;
+  sessions: Observable<Session[]>;
 
-  searchNameInput = new FormControl();
-
-  constructor(private dataService: SessionDataService) { }
+  constructor(private sessionDataService: SessionDataService) {
+  }
 
   ngOnInit(): void {
+    this.sessions = this.sessionDataService.getList();
 
   }
 

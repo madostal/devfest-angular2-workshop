@@ -11,9 +11,6 @@ export class SessionDetailCardComponent {
   @Input() session: Session;
   @Output() onFavoriteClick = new EventEmitter<number>();
 
-  constructor() {
-  }
-
   onHeaderClick() {
     this.onFavoriteClick.emit(this.session.id);
   }

@@ -27,7 +27,7 @@ export class SessionDataService {
       .map(sessions => sessions.find(item => item.id === id))
   }
 
-  search(text: string) {
+  search(text: string): Observable<Session[]> {
     const lowerCaseText = text.toLowerCase();
 
     return this.getList()

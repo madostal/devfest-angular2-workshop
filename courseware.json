@@ -5,7 +5,7 @@
   "todoFilePath": "todo.pug",
   "todos": [
     "tasks/01-component",
-    "tasks/02-data-and-routing",
+    "tasks/02-routing-and-data",
     "tasks/03-observables"
   ]
 }

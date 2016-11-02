@@ -1,8 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { SessionDataService } from "../session-data.service";
+import {Component, OnInit, Input} from "@angular/core";
 import { Session } from "../Session";
-import { ActivatedRoute } from "@angular/router";
-import { AngularFire } from "angularfire2";
+
+const sessions = require("../../../data/sessions-preview.json");
 
 @Component({
   selector: 'app-session-detail',
@@ -11,29 +10,16 @@ import { AngularFire } from "angularfire2";
 })
 export class SessionDetailComponent implements OnInit {
 
-  session: Session;
+  session: Session = sessions[1];
 
-  constructor(private route: ActivatedRoute,
-              private dataService: SessionDataService,
-              private angularFire: AngularFire) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    let id = +this.route.snapshot.params['id'];
-
-    this.dataService.getById(id)
-      .subscribe(session => {
-        this.session = session
-      });
+    // TODO načtení dat dle id z routeru
   }
 
-  onFavoriteClick(id) {
-    const likes = this.angularFire.database.list('/likes');
-
-    likes.push({
-      sessionTitle: this.session.title,
-      sessionId: id,
-      user: "Milan"
-    });
+  favoriteClickHandler(session: Session) {
+    console.log('SessionDetailComponent - favoriteClickHandler', session)
   }
 }

@@ -2,25 +2,20 @@
   <thead>
   <tr>
     <th>
-      <p class="control has-icon">
-        <input class="input"
-               type="text"
-               placeholder="Title"
-               [formControl]="searchNameInput"
-        >
-        <i class="fa fa-search"></i>
-      </p>
+      Title
     </th>
-    <th>Speaker</th>
+    <th>
+      Speaker
+    </th>
     <th></th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let session of observableSessions| async">
+  <tr *ngFor="let session of sessions">
     <td>{{session.title}}</td>
     <td>{{session|speakerNames}}</td>
     <td class="is-icon">
-      <a [routerLink]="['/session', session.id]">
+      <a href="#">
         <i class="fa fa-info"></i>
       </a>
     </td>

@@ -1,31 +1,45 @@
-# DevfestAngular2Workshop
+## Welcome to Angular 2 workshop
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
+### Prerekvizity
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Budeme potřebovat:
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+ * [git](https://git-scm.com/)
+ * [nodejs](https://nodejs.org/en/), pokud možno v aktuální verzi 6.x
+ * rozumný editor s podporou TypeScriptu, doporučujeme [Webstorm](https://www.jetbrains.com/webstorm/download/)
 
-## Build
+Pro náš projekt použijeme [Angular CLI](http://cli.angular.io). Ten potřebujeme mít nainstalovaný globálně:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```
+npm install -g angular-cli
+```
 
-## Running unit tests
+Správnost instalace můžete ověřit příkazem
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+ng --help
+```
 
-## Running end-to-end tests
+Měl by vám vypsat nápovědu k použití příkazu.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Nástroje máme připravené, pro workshop jsme připravili [repozitář](https://bitbucket.org/angular_cz/devfest-angular2-workshop) . Naklonujte si ho a poté ve složce projektu spuťte instalaci závislostí
 
-## Deploying to Github Pages
+```
+git clone https://bitbucket.org/angular_cz/devfest-angular2-workshop
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
+cd devfest-angular2-workshop
+npm install
+```
 
-## Further help
+A to je vše. Pokud si chcete ověřit, že je vše nainstalované správně, můžete ve složce projektu spustit příkaz
 
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+ng serve
+```
+
+Ten zbuilduje projekt a zpřístupní ho na adrese [http://localhost:4200](http://localhost:4200)
+
+###Pokud vše proběhlo bez chyb, jste připravení. Těšíme se na workshopu.
+
+

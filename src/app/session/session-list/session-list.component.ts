@@ -14,8 +14,7 @@ export class SessionListComponent implements OnInit {
 
   searchNameInput = new FormControl();
 
-  constructor(private dataService: SessionDataService) {
-  }
+  constructor(private dataService: SessionDataService) {}
 
   ngOnInit(): void {
     this.observableSessions = this.searchNameInput.valueChanges

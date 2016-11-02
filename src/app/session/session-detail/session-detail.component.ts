@@ -29,14 +29,7 @@ export class SessionDetailComponent implements OnInit {
   }
 
   onFavoriteClick(session) {
-    const notification: SessionLike = {
-      sessionTitle: session.title,
-      sessionId: session.id,
-      user: "Milan"
-    };
-
     const likes = this.angularFire.database.list('/likes');
 
-    likes.push(notification);
   }
 }

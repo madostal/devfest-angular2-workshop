@@ -1,7 +1,7 @@
 h2 Routing and Data
 
 p.
-  V předchozí části jsme vytvořili komponentu karty detailu přednášky. V tomhto kroku máme připřaveny další komponenty.
+  V předchozí části jsme vytvořili komponentu karty detailu přednášky. V tomto kroku máme připřaveny další komponenty.
   #[b SessionDetailComponent], která využívá dříve vytvořenou kartu komponenty, a #[b SessionListComponent],
   která představuje seznam přednášek.
 
@@ -122,7 +122,7 @@ p.
 
 ul.task
   li v souboru #[b app/app-routing.module.ts] přidejte komponentu #[b Error404Component] pro jiné než uvedené cesty (path: '**')
-  li zkontrolujte, že aplikace zobrazí chybouvou komponentu např. na adrese #[a(href="http://localhost:4200/qwerty", target="_blank") localhost:4200/qwerty]
+  li zkontrolujte, že aplikace zobrazí chybovou komponentu např. na adrese #[a(href="http://localhost:4200/qwerty", target="_blank") localhost:4200/qwerty]
 
 solution
   i app/app-routing.module.ts
@@ -134,6 +134,7 @@ solution
         RouterModule.forRoot([
             {path: '', component: SessionListComponent},
             {path: 'session/:id', component: SessionDetailComponent}
+            {path: '**', component: Error404Component}
           ]
         )
       ],

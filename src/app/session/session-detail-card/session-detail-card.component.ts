@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Session } from "../../session/Session";
+import { Session } from "../../session/session";
 import { Speaker } from "../speaker";
 
 @Component({

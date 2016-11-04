@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {SessionDataService} from "../session-data.service";
-import {Session} from "../Session";
+import {Session} from "../session";
 import {ActivatedRoute} from "@angular/router";
 import {AngularFire} from "angularfire2";
 import {SessionLike} from "../session-like";

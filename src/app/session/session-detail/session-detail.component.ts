@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from "@angular/core";
-import { Session } from "../Session";
+import { Session } from "../session";
 import { ActivatedRoute } from "@angular/router";
 import { SessionDataService } from "../session-data.service";
 

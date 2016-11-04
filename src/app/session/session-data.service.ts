@@ -1,4 +1,4 @@
-import { Session } from "./Session";
+import { Session } from "./session";
 import { Observable } from "rxjs";
 import "rxjs/operator/map";
 import "rxjs/operator/publishReplay";

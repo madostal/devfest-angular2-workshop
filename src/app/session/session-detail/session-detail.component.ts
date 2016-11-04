@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Session } from "../Session";
+import { Session } from "../session";
 
 const sessions = require("../../../data/sessions-preview.json");
 

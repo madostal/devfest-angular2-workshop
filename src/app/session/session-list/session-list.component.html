@@ -11,6 +11,9 @@
   </tr>
   </thead>
   <tbody>
+
+  <!-- TODO načítejte data asynchronně-->
+
   <tr *ngFor="let session of sessions">
     <td>{{session.title}}</td>
     <td>{{session|speakerNames}}</td>

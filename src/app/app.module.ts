@@ -18,10 +18,16 @@ import { SessionDetailCardComponent } from "./session/session-detail-card/sessio
     SessionDetailCardComponent,
     SessionDetailComponent
   ],
+
+  // TODO přidejte závislost na routing modulu
+
   imports: [
     BrowserModule,
     HttpModule,
   ],
+
+  // TODO přidejte injektovatelnou službu
+
   providers: [],
   bootstrap: [AppComponent]
 })

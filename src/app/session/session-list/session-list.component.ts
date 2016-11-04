@@ -11,11 +11,12 @@ export class SessionListComponent implements OnInit {
 
   sessions: Session[] = sessions;
 
+  // TODO Injektněte potřebné služby
   constructor() {
   }
 
   ngOnInit(): void {
-
+    // TODO načtěte seznam
   }
 
 }

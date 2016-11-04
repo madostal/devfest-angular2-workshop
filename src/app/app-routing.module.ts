@@ -5,7 +5,9 @@ import { SessionListComponent } from "./session/session-list/session-list.compon
 @NgModule({
   imports: [
     RouterModule.forRoot([
-        {path: '', component: SessionListComponent}
+        // TODO přidávejte postupně nastavení routeru
+
+        {path: '', component: SessionListComponent},
       ]
     )
   ],

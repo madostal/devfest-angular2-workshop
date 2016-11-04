@@ -12,6 +12,7 @@ export class SessionDetailComponent implements OnInit {
 
   session: Session = sessions[1];
 
+  // TODO Injektněte potřebné služby
   constructor() {
   }
 

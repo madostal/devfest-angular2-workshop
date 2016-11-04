@@ -1,9 +1,10 @@
-## Welcome to Angular 2 workshop
+## Angular 2 workshop
+
+Meteriály z workshopu: [http://www.angular.cz/akce/devfest-2016/](http://www.angular.cz/akce/devfest-2016/)
 
 ### Prerekvizity
 
 Budeme potřebovat:
-
 
  * [git](https://git-scm.com/)
  * [nodejs](https://nodejs.org/en/), pokud možno v aktuální verzi 6.x

@@ -12,17 +12,15 @@ export class SessionListComponent implements OnInit {
 
   observableSessions: Observable<Session[]>;
 
-  searchNameInput = new FormControl();
+  // TODO přidejte vlastnost searchNameInput
 
   constructor(private dataService: SessionDataService) {
   }
 
   ngOnInit(): void {
-    this.observableSessions = this.searchNameInput.valueChanges
-      .startWith('')
-      .debounce(() => Observable.interval(200))
-      .distinctUntilChanged()
-      .flatMap(term => this.dataService.search(term));
+
+    // TODO použijte operátory observables
+    this.observableSessions = this.dataService.getList();
   }
 
 }

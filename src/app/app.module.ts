@@ -32,6 +32,9 @@ export const firebaseConfig = {
     SessionDetailComponent
   ],
   imports: [
+    // TODO Přidejte modul pro reaktivní formuláře
+
+
     BrowserModule,
     HttpModule,
     AppRoutingModule,

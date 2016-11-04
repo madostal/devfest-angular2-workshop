@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { Session } from "../../session/Session";
+import { Session } from "../../session/session";
 import { FormControl } from "@angular/forms";
 import { SessionDataService } from "../../session/session-data.service";
 
